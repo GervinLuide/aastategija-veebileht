@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="fonts/BlackHawk.woff2">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {box-sizing: border-box}
+        body {font-family: Verdana, sans-serif; margin:0}
+        .mySlides {display: none}
+        img {vertical-align: middle;}
+
+        @font-face {
+            font-family: 'BLACKHAWK';
+            src: url('fonts/BlackHawk.woff2') format('woff2');
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            width: 100%;
+            max-height: 719px;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 86px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            line-height: 113px;
+            width: 100%;
+            font-family: 'BLACKHAWK', sans-serif;
+        }
+
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+            .text {font-size: 11px}
+        }
+
+        /* Page image */
+        .page-image {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            cursor: pointer; /* Add cursor pointer to indicate clickability */
+            padding: 20px;
+        }
+
+        /* Invisible arrows */
+        .page-image::before,
+        .page-image::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%; /* Adjust arrow size as needed */
+            z-index: 1;
+        }
+
+        .page-image::before {
+            left: 0;
+        }
+
+        .page-image::after {
+            right: 0;
+        }
+
+        .page-indicator {
+            display: inline-block;
+            margin: 0 8px;
+            cursor: pointer;
+        }
+
+        .page-indicator img {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+
+        .active {
+            border: 2px solid #717171;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slideshow-container">
+
+    <div class="container mySlides fade" style="position: absolute">
+        <img src="images/LT1.png" style="width:100%">
+        <div class="text" align="right">Baltic Bonds,<br> Vocational & Beyond</div>
+        <div class="page-image"><img src="images/Page1.png" alt="Page 1/4" class="page-indicator"></div>
+    </div>
+
+    <div class="container mySlides fade" style="text-align: left; position: relative;">
+        <img src="images/poisidkorvpall1.png" style="width:100%">
+        <div class="text" style="position: absolute; top: 0; left: 0; margin-top: 40px; margin-left: 30px">Three Countries,<br> One Passion!</div>
+        <div class="page-image"><img src="images/Page2.png" alt="Page 2/4" class="page-indicator"></div>
+    </div>
+
+    <div class="container mySlides fade">
+        <img src="images/korvpalltudrukud5.png" style="width:100%">
+        <div class="text" style="margin-left: 30px">Baltic Bonds,<br> Vocational & Beyond</div>
+        <div class="page-image"><img src="images/Page3.png" alt="Page 3/4" class="page-indicator"></div>
+    </div>
+
+    <div class="container mySlides fade" style="text-align: left; position: relative;">
+        <img src="images/tanavakorvpallnaised3.png" style="width:100%">
+        <div class="text" style="position: absolute; top: 0; left: 0; margin-top: 40px; margin-left: 30px">Three Countries,<br> One Passion!</div>
+        <div class="page-image"><img src="images/Page4.png" alt="Page 4/4" class="page-indicator"></div>
+    </div>
+
+</div>
+
+<script>
+    let slideIndex = 0;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let indicators = document.getElementsByClassName("page-indicator");
+
+        // Wrap around to the last slide if at the end
+        if (n >= slides.length) {
+            slideIndex = 0;
+        }
+
+        // Wrap around to the first slide if going back from the first slide
+        if (n < 0) {
+            slideIndex = slides.length - 1;
+        }
+
+        // Hide all slides
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        // Set active class to the corresponding page indicator
+        for (i = 0; i < indicators.length; i++) {
+            indicators[i].classList.remove("active");
+        }
+        indicators[slideIndex].classList.add("active");
+
+        // Display the current slide
+        slides[slideIndex].style.display = "block";
+    }
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowLeft") {
+            plusSlides(-1);
+        } else if (event.key === "ArrowRight") {
+            plusSlides(1);
+        }
+    });
+
+    // Add event listeners for left and right arrows in the page-image
+    let pageImages = document.getElementsByClassName("page-image");
+    for (let i = 0; i < pageImages.length; i++) {
+        pageImages[i].addEventListener("click", function (event) {
+            const clickX = event.clientX - this.getBoundingClientRect().left;
+            const middle = this.clientWidth / 2;
+
+            if (clickX < middle) {
+                plusSlides(-1); // Clicked on the left side of the image
+            } else {
+                plusSlides(1);  // Clicked on the right side of the image
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

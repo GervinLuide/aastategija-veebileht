@@ -40,15 +40,91 @@ nav ul li a:hover {
 
 
 
+* {box-sizing: border-box}
+.mySlides {display: none}
+img {vertical-align: middle;}
 
+@font-face {
+    font-family: 'BLACKHAWK';
+    src: url('fonts/BlackHawk.woff2') format('woff2');
+}
 
+/* Slideshow container */
+.slideshow-container {
+    width: 100%;
+    max-height: 677px;
+    position: relative;
+    margin: auto;
+}
 
+/* Caption text */
+.text {
+    color: #f2f2f2;
+    font-size: 86px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    line-height: 113px;
+    width: 100%;
+    font-family: 'BLACKHAWK', sans-serif;
+}
 
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
 
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
 
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+    .text {font-size: 11px}
+}
 
+/* Page image */
+.page-image {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    cursor: pointer; /* Add cursor pointer to indicate clickability */
+    padding: 20px;
+}
 
+/* Invisible arrows */
+.page-image::before,
+.page-image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%; /* Adjust arrow size as needed */
+    z-index: 1;
+}
 
+.page-image::before {
+    left: 0;
+}
 
+.page-image::after {
+    right: 0;
+}
 
+.page-indicator {
+    display: inline-block;
+    margin: 0 8px;
+    cursor: pointer;
+}
 
+.page-indicator img {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.active {
+    border: 2px solid #717171;
+}
