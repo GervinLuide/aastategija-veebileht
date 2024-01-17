@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    background-color: black;
+    font-family: 'Montserrat', sans-serif;
+}
+
+header{
+    width: 100%;
+    height: 116px;
+    margin: 0 auto;
+
+}
+.navi-list{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: 188px;
+    margin-right: 188px;
+    padding: 0;
+
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.centered-logo img{
+    height: 102px;
+    width: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
